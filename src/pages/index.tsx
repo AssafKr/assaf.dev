@@ -1,14 +1,13 @@
 import * as React from "react";
 
-// markup
-const NotFoundPage = () => {
+const IndexPage = () => {
   return (
     <main>
       <div className="flex flex-col h-screen">
         <p className="text-9xl w-max m-auto">
-          Huh?{" "}
-          <span role="img" aria-label="shrugging man">
-            🤷‍♂️
+          Hi{" "}
+          <span role="img" aria-label="waving hand">
+            👋
           </span>
         </p>
       </div>
@@ -16,4 +15,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default IndexPage;
