@@ -1,0 +1,10 @@
+{
+  "name": "assaf.dev",
+  "version": "1.0.0",
+  "description": "Homepage of assaf",
+  "main": "index.js",
+  "repository": "https://github.com/AssafKr/assaf.dev.git",
+  "author": "Assaf Krintza <assafk88@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
