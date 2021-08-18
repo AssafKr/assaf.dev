@@ -1,6 +1,11 @@
 import * as React from "react";
+import { useEffect } from "react";
+import { createScene } from "../components/3d-hand";
 
 const IndexPage = () => {
+  useEffect(() => {
+    createScene();
+  }, []);
   return (
     <main>
       <div className="flex flex-col h-screen">
