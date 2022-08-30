@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { createScene } from "../components/3d-hand";
+import { SomeComponent } from "../components/SomeComponent";
 
 const IndexPage = () => {
   useEffect(() => {
@@ -15,6 +16,7 @@ const IndexPage = () => {
             👋
           </span>
         </p>
+        <SomeComponent />
       </div>
     </main>
   );
