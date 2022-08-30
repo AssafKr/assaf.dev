@@ -10,7 +10,7 @@ const IndexPage = () => {
     <main>
       <div className="flex flex-col h-screen">
         <p className="text-9xl w-max m-auto">
-          Hi{" "}
+          Hiush{" "}
           <span role="img" aria-label="waving hand">
             👋
           </span>
