@@ -3,10 +3,16 @@ import screenshot from "../../static/night-sky-beter-tileset.png";
 
 const Screenshot = () => {
   return (
-    <img
-      src={screenshot}
-      style={{ imageRendering: "pixelated", height: "100vh" }}
-    />
+    <div>
+      <img
+        src={screenshot}
+        style={{
+          imageRendering: "pixelated",
+          height: "100vh",
+          objectFit: "contain",
+        }}
+      />
+    </div>
   );
 };
 
