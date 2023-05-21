@@ -1,14 +1,12 @@
 import * as React from "react";
 import { useEffect } from "react";
-import { createScene } from "../components/3d-hand";
+import { CanvasContainer } from "../components/CanvasContainer";
 
 const IndexPage = () => {
-  useEffect(() => {
-    createScene();
-  }, []);
   return (
-    <main>
-      <div className="flex flex-col h-screen">
+    <main style={{ height: "5000px" }}>
+      <div className="flex flex-col h-screen" style={{ position: "fixed" }}>
+        <CanvasContainer />
         <p className="text-9xl w-max m-auto">
           Hi{" "}
           <span role="img" aria-label="waving hand">

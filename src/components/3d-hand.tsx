@@ -1,8 +1,9 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-export function createScene() {
+export function createScene(parentElement: HTMLElement) {
   const scene = new THREE.Scene();
+  let mixer: THREE.AnimationMixer | null = null;
   const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -12,18 +13,22 @@ export function createScene() {
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  parentElement.appendChild(renderer.domElement);
 
   const loader = new GLTFLoader();
   loader.load(
     "model.glb",
     function (gltf) {
-      scene.add(gltf.scene);
       const cube = gltf.scene.getObjectByName("Cube");
       (cube as any).material = new THREE.MeshLambertMaterial({
         color: 0xff0000,
       });
-      cube.rotateX(Math.PI / 2);
+
+      mixer = new THREE.AnimationMixer(gltf.scene);
+      const action = mixer.clipAction(gltf.animations[0]);
+      action.play();
+
+      scene.add(gltf.scene);
     },
     undefined,
     function (error) {
@@ -40,10 +45,20 @@ export function createScene() {
 
   camera.position.z = 5;
 
-  function render() {
+  let lastTime = 0;
+  let currScroll = 0;
+  function render(accumTime: number) {
     requestAnimationFrame(render);
+    // if (mixer) mixer.update((accumTime - lastTime) / 1000);
+    // if (mixer) mixer.update(currScroll);
+    lastTime = accumTime;
     renderer.render(scene, camera);
   }
 
-  render();
+  window.onscroll = (e) => {
+    console.log("scroll!", window.scrollY);
+    currScroll = window.scrollY;
+    if (mixer) mixer.update(currScroll / 50000);
+  };
+  render(lastTime);
 }
